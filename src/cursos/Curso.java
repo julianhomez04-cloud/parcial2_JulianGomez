@@ -1,11 +1,6 @@
 package cursos;
 
-/**
- * Clase abstracta que representa un curso del plan de estudios.
- * Cada subclase define su dificultad esperada.
- */
 public abstract class Curso {
-
     private String codigo;
     private String nombre;
     private int creditos;
@@ -16,10 +11,6 @@ public abstract class Curso {
         this.creditos = creditos;
     }
 
-    /**
-     * Cada subclase implementa cómo se calcula la dificultad esperada
-     * del curso según su tipo (polimorfismo).
-     */
     public abstract double dificultadEsperada();
 
     public String getCodigo() { return codigo; }

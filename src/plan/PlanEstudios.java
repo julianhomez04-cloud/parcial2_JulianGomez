@@ -3,38 +3,33 @@ package plan;
 import cursos.*;
 import java.util.ArrayList;
 
-/**
- * Plan de estudios que COMPONE cursos.
- * Los cursos se crean dentro del constructor (composición real).
- */
 public class PlanEstudios {
-
     private String nombre;
     private ArrayList<Curso> cursos;
 
     public PlanEstudios(String nombre) {
         this.nombre = nombre;
         this.cursos = new ArrayList<>();
-        // TODO: crear los cursos del plan aquí dentro
-        // Ejemplo esperado: agregar 3 cursos (obligatorio, electivo, nivelatorio)
-        // usando el método privado agregarCurso(...).
+        // composición: los cursos se crean dentro del plan
+        agregarCurso(new CursoObligatorio("OBL-01", "Programacion I", 4));
+        agregarCurso(new CursoObligatorio("OBL-02", "Estructuras de Datos", 3));
+        agregarCurso(new CursoElectivo("ELE-01", "Inteligencia Artificial", 3));
+        agregarCurso(new CursoNivelatorio("NIV-01", "Matematicas Basicas", 2));
     }
 
-    /**
-     * Método privado para agregar cursos desde el propio constructor.
-     * Solo el plan puede crear sus cursos (composición).
-     */
-    private void agregarCurso(Curso curso) {
-        // TODO: implementar
+    private void agregarCurso(Curso c) {
+        cursos.add(c);
     }
 
-    /**
-     * Promedio de dificultad de todos los cursos del plan.
-     * Retorna 0 si el plan no tiene cursos.
-     */
     public double dificultadPromedio() {
-        // TODO: implementar
-        return 0;
+        if (cursos.isEmpty()) {
+            return 0;
+        }
+        double suma = 0;
+        for (Curso c : cursos) {
+            suma += c.dificultadEsperada();
+        }
+        return suma / cursos.size();
     }
 
     public String getNombre() { return nombre; }
