@@ -1,6 +1,6 @@
 # Comprensión del diseño — Enunciado C
-**Nombre:** _________________________
-**Fecha:** __________________________
+**Nombre:** Julian Gomez Homez
+**Fecha:** 19/10/2026
 
 Responde con tus palabras, basándote en `docs/UML-final.md`. Respuestas
 concisas (2–4 líneas por pregunta). Evidencia que entendiste el contrato
