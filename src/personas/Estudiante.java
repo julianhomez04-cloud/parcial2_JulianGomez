@@ -3,12 +3,7 @@ package personas;
 import cursos.Curso;
 import java.util.ArrayList;
 
-/**
- * Estudiante con notas en un arreglo de capacidad fija (int[])
- * y cursos inscritos en un ArrayList (asociación N:M con Curso).
- */
 public class Estudiante {
-
     private String nombre;
     private int[] notas;
     private int contadorNotas;
@@ -21,24 +16,29 @@ public class Estudiante {
         this.inscritos = new ArrayList<>();
     }
 
-    /**
-     * Registra una nota. Si el arreglo está lleno, no se registra.
-     */
-    public void registrarNota(int nota) {
-        // TODO: implementar
+    public void registrarNota(int n) {
+        if (contadorNotas >= notas.length) {
+            return; // arreglo lleno: se ignora la nota
+        }
+        notas[contadorNotas] = n;
+        contadorNotas++;
     }
 
-    /**
-     * Promedio de las notas registradas. Retorna 0 si no hay notas.
-     */
     public double promedio() {
-        // TODO: implementar
-        return 0;
+        if (contadorNotas == 0) {
+            return 0;
+        }
+        int suma = 0;
+        for (int i = 0; i < contadorNotas; i++) {
+            suma += notas[i];
+        }
+        return (double) suma / contadorNotas;
     }
 
-    /** Asocia al estudiante con un curso (no lo crea). */
-    public void inscribirCurso(Curso curso) {
-        // TODO: implementar
+    public void inscribirCurso(Curso c) {
+        if (!inscritos.contains(c)) {
+            inscritos.add(c);
+        }
     }
 
     public String getNombre() { return nombre; }
